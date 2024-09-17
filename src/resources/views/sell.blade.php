@@ -7,19 +7,9 @@
 @section('main')
 <div class="sell">
     <h2>商品の出品</h2>
-    <form class="form" action="/sell/confirm" method="post" enctype="multipart/form-data">
+    <form class="form" action="/sell/confirm" method="post">
         @csrf
         <input type="hidden" name="user_id" value="{{Auth::user()->id}}" />
-
-        <div class="sell__img">
-            <p>商品の画像</p>
-            <input type="file" name="image" value="{{old('image') }}" />
-            <div class="form__error">
-                @error('image')
-                {{ $message }}
-                @enderror
-            </div>
-        </div>
 
         <div class="sell__detail">
             <h3>商品の詳細</h3>
@@ -76,7 +66,7 @@
             <h3>販売価格</h3>
             <div class="sell__price-content">
                 <p>販売価格</p>
-                <label>￥<input type="number" name="price" value="{{ old('price') }}"></label>
+                <label>￥<input type="number" name="price" value="{{ old('price') }}" min="1"></label>
                 <div class="form__error">
                     @error('price')
                     {{ $message }}

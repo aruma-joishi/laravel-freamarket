@@ -25,7 +25,6 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'img_url' => ['required'],
             'postcode' => ['required', 'integer','min:7','max:7'],
             'address' => ['required'],
         ];
@@ -34,7 +33,6 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name.required' => '名前を入力してください',
-            'img_url.required' => '画像を選択してください',
             'postcode.required' => '郵便番号を入力してください',
             'postcode.integer' => '半角数字7桁で入力してください',
             'postcode.min:7' => '半角数字7桁で入力してください',

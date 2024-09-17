@@ -20,7 +20,7 @@
     <div>
         @foreach($items as $item)
         <a class="favorite-icon" href="/item/{{$item->id}}">
-            <img class="item-card__img" src="{{ $item->image_url}}" alt="{{$item->name}}" />
+            <img src="{{$item->img_url}}" alt="{{$item->name}}" />
         </a>
     </div>
     @endforeach

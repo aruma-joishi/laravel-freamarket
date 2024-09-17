@@ -25,18 +25,15 @@ class BuyController extends Controller
     public function buyConfirm(Request $request)
     {
         $action = $request->get('settlement', 'address','confirm');
+        $item = Item::where('id', $request->item_id)->first();
         if ($action == 'settlement') {
-            return redirect('/')->withInput();
-
+            return view('settlement',compact("request"));
         } elseif ($action == 'address') {
-            $request['tel'] = $request['firsttel'] .= $request['middletel'] .= $request['lasttel'];
-            $contact = $request->only(['lastname', 'firstname', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
-            Contact::create($contact);
-            return view('thanks');
-
+            return view('settlement', compact("request"));
         } else{
             $bought = $request->get('user_id', 'item_id');
             Bought::create($bought);
+            return view('/')->with('result', '購入完了しました');
         }
     }
 }

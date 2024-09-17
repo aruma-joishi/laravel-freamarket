@@ -24,7 +24,6 @@ class SellRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => ['required'],
             'category_id' => ['required'],
             'condtition_id' => ['required'],
             'name' => ['required'],
@@ -36,7 +35,6 @@ class SellRequest extends FormRequest
     public function messages()
     {
         return [
-            'image.required' => '画像を選択してください',
             'category_id.required' => 'カテゴリを選択してください',
             'condtition_id.required' => '状態を選択してください',
             'name.required' => '名前を入力してください',

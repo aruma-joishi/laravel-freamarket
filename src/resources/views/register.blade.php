@@ -7,7 +7,7 @@
 @section('main')
 
 <div class="register">
-    <h2 class="main-ttl">会員登録</h2>
+    <h2>会員登録</h2>
     <div class="register__content">
         <form action="/register" method="post">
             @csrf

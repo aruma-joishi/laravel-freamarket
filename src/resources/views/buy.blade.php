@@ -11,7 +11,7 @@
     <form class="form" method="POST" action="/buy/confirm">
         @csrf
         <input type="hidden" name="item_id" value="$item->id}}" />
-        <input type="hidden" name="item_id" value="$item->id}}" />
+        <input type="hidden" name="user_id" value="{{Auth::user()->id}}" />
         <div class="settlement">
             @foreach ($settlements as $settlement)
             @if ($settlement['id'] == $settlement_id)
@@ -19,7 +19,6 @@
             @endif
             @endforeach
             <button type="submit" name="action" value="settlement">変更する</button>
-
         </div>
 
         <div class="address">

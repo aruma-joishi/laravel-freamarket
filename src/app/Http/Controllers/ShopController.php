@@ -46,7 +46,13 @@ class ShopController extends Controller
     {
         $comment = $request->only(['comment','user_id','item_id']);
         Comment::create($comment);
-        return redirect('/');
+        return redirect()->back();
+    }
+
+    public function destroy(Request $request)
+    {
+        Comment::find($request->comment_id)->delete();
+        return redirect('comment/{$request->item_id}');
     }
 
 
@@ -76,7 +82,8 @@ class ShopController extends Controller
 
     public function update(ProfileRequest $request)
     {
-        $profile = $request->all();
+        $profile = $request->only(['name', 'postcode', 'address','building']);
+        dd($profile);
         unset($profile['_token']);
         Profile::find('user_id',$request->user_id)->first()->update($profile);
         return redirect('/mypage');
